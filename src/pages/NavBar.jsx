@@ -93,13 +93,12 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
-      <div className="border-b py-4 px-5">
-        <div className="max-w-7xl mx-auto">
-          {/* Mobile Navigation */}
-          <div className="flex md:hidden items-center justify-between">
+      <div className="border-b py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Mobile and Tablet Navigation */}
+          <div className="flex lg:hidden items-center justify-between">
             {/* Left Section: Hamburger + Logo */}
             <div className="flex items-center gap-4">
-              {/* Hamburger Menu */}
               <button 
                 ref={hamburgerRef}
                 className="flex flex-col justify-center items-center w-8 h-8 space-y-2"
@@ -109,8 +108,6 @@ const Navbar = () => {
                 <span className="w-8 h-0.5 bg-foreground block transition-opacity left-0"></span>
                 <span className="w-8 h-0.5 bg-foreground block transition-transform origin-center"></span>
               </button>
-
-              {/* Logo */}
               
               <a href="/#hero" className="flex items-center">
                 <p className="text-xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">
@@ -137,10 +134,10 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Overlay */}
+          {/* Mobile and Tablet Menu Overlay */}
           <div 
             ref={menuRef}
-            className="fixed md:hidden top-[73px] left-0 w-full h-[calc(100vh-73px)] bg-background transform -translate-x-full"
+            className="fixed lg:hidden top-[73px] left-0 w-full h-[calc(100vh-73px)] bg-background transform -translate-x-full"
           >
             <div className="p-6 space-y-6">
               <nav className="flex flex-col space-y-4">
@@ -168,7 +165,6 @@ const Navbar = () => {
                     <span className="mx-2">Star on GitHub</span>
                     <Star className="w-4 h-4" />
                     <NumberTicker className="text-color-2 ml-1" value={24} />
-                    {/* <span className="ml-1">16</span> */}
                   </RainbowButton>
                   
                   <Button 
@@ -182,8 +178,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center justify-between">
-            {/* Rest of desktop navigation code remains the same */}
+          <div className="hidden lg:flex items-center justify-between">
             <div className="flex items-center gap-2">
               <a href="/#hero" className="flex items-center gap-2">
                 <p className="text-xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">
@@ -192,7 +187,6 @@ const Navbar = () => {
               </a>
             </div>
              
-
             <nav className="flex items-center gap-2">
               {menuItems.map((item) => (
                 <Button
@@ -214,7 +208,6 @@ const Navbar = () => {
                 <span className="mx-2 text">Star on GitHub</span>
                 <Star className="w-4 h-4" />
                 <NumberTicker className="text-color-2 ml-1" value={24} />
-                {/* <span className="ml-1">16</span> */}
               </RainbowButton>
               
               <Button

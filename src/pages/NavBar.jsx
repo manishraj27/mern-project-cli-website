@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/ModeToggle";
 import { RainbowButton } from "@/components/ui/rainbow-button";
-import { GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { Star, User, ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
@@ -24,17 +24,22 @@ const Navbar = () => {
     { 
       icon: <User className="h-5 w-5" />, 
       label: "Portfolio",
-      href: "#portfolio"
+      href: "https://manishraj.me"
     },
     { 
       icon: <GitHubLogoIcon className="h-5 w-5" />, 
       label: "GitHub",
-      href: "#github"
+      href: "https://github.com/manishraj27"
+    },
+    {
+      icon: <LinkedInLogoIcon className="h-5 w-5" />,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/manishraj27"
     },
     { 
       icon: <TwitterLogoIcon className="h-5 w-5" />, 
       label: "X",
-      href: "#twitter"
+      href: "https://x.com/manish_rraaj"
     },
   ];
 
@@ -106,10 +111,11 @@ const Navbar = () => {
               </button>
 
               {/* Logo */}
+              
               <a href="/#hero" className="flex items-center">
                 <p className="text-xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">
                 devcli
-                </p>
+                </p>  
               </a>
             </div>
 
@@ -122,6 +128,7 @@ const Navbar = () => {
                   size="icon"
                   className="h-8 w-8 hover:bg-accent"
                   aria-label={link.label}
+                  onClick={() => window.open(link.href, "_blank")}
                 >
                   {link.icon}
                 </Button>
@@ -142,7 +149,10 @@ const Navbar = () => {
                     key={item.label}
                     href={item.href}
                     className="text-lg font-medium hover:text-primary transition-colors"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      setIsOpen(false);
+                      document.querySelector(item.href).scrollIntoView({ behavior: 'smooth' });
+                    }}
                   >
                     {item.label}
                   </a>
@@ -177,9 +187,7 @@ const Navbar = () => {
                 </p>
               </a>
             </div>
-                {/* <Button variant="ghost" className="text-sm font-medium hover:bg-accent">
-                 <HyperText text="Features" />
-                  </Button> */}
+             
 
             <nav className="flex items-center gap-2">
               {menuItems.map((item) => (
@@ -187,6 +195,7 @@ const Navbar = () => {
                   key={item.label}
                   variant="ghost"
                   className="text-sm font-medium hover:bg-accent"
+                  onClick={() =>  document.querySelector(item.href).scrollIntoView({ behavior: 'smooth' })}
                 >
                   {item.label}
                 </Button>
@@ -214,6 +223,7 @@ const Navbar = () => {
                     size="icon"
                     className="hover:bg-accent"
                     aria-label={link.label}
+                    onClick={() => window.open(link.href, "_blank")}
                   >
                     {link.icon}
                   </Button>

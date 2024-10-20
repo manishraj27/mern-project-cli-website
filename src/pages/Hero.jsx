@@ -22,7 +22,7 @@ const Hero = () => {
 
         {/* Main Content */}
         <div className="relative z-10 mx-auto max-w-5xl pt-8 pb-24 text-center">
-          <h1 className="bg-gradient-to-r from-neutral-900 to-neutral-600 bg-clip-text text-transparent dark:from-neutral-100 dark:to-neutral-400 text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl whitespace-nowrap">
+          <h1 className="bg-gradient-to-r from-neutral-900 to-neutral-600 bg-clip-text text-transparent dark:from-neutral-100 dark:to-neutral-400 text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
             MERN Project Generator{" "}
             <SparklesText className="text-color-2" text="CLI" />
           </h1>

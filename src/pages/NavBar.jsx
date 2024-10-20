@@ -161,7 +161,9 @@ const Navbar = () => {
 
               <div className="pt-6 border-t">
                 <div className="flex flex-col space-y-4">
-                  <RainbowButton className="w-full justify-center">
+                  <RainbowButton className="w-full justify-center"
+                  onClick={() => window.open("https://github.com/manishraj27/mern-project-cli", "_blank")}
+                  >
                     <GitHubLogoIcon className="w-5 h-5" />
                     <span className="mx-2">Star on GitHub</span>
                     <Star className="w-4 h-4" />
@@ -169,7 +171,9 @@ const Navbar = () => {
                     {/* <span className="ml-1">16</span> */}
                   </RainbowButton>
                   
-                  <Button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:opacity-90">
+                  <Button 
+                  onClick={() => window.open("https://www.npmjs.com/package/mern-project-cli", "_blank")}
+                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:opacity-90">
                     Get Started <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </div>
@@ -203,7 +207,9 @@ const Navbar = () => {
             </nav>
             
             <div className="flex items-center gap-4">
-              <RainbowButton>
+              <RainbowButton
+               onClick={() => window.open("https://github.com/manishraj27/mern-project-cli", "_blank")}
+              >
                 <GitHubLogoIcon className="w-5 h-5" />
                 <span className="mx-2 text">Star on GitHub</span>
                 <Star className="w-4 h-4" />
@@ -211,7 +217,9 @@ const Navbar = () => {
                 {/* <span className="ml-1">16</span> */}
               </RainbowButton>
               
-              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:opacity-90">
+              <Button
+               onClick={() => window.open("https://www.npmjs.com/package/mern-project-cli", "_blank")}
+               className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:opacity-90">
                 Get Started <ArrowRight className="w-4 h-4" />
               </Button>
 

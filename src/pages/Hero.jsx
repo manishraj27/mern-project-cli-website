@@ -14,15 +14,15 @@ const Hero = () => {
         <div className="z-10 pt-8 flex justify-center">
           <div className="group rounded-full border border-black/5 bg-neutral-100 transition-all hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800">
             <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1.5 text-sm text-neutral-900 dark:text-neutral-200">
-              <span>✨ Supercharge MERN Development with devcli</span>
+              <span>✨ Say goodbye to MERN setup headaches!</span>
               <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </AnimatedShinyText>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="relative z-10 mx-auto max-w-5xl pt-8 pb-24 text-center">
-          <h1 className="bg-gradient-to-r from-neutral-900 to-neutral-600 bg-clip-text text-transparent dark:from-neutral-100 dark:to-neutral-400 text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl">
+        <div className="relative z-10 mx-auto max-w-5xl pt-8 pb-24 text-center px-4">
+          <h1 className="bg-gradient-to-r from-neutral-900 to-neutral-600 bg-clip-text text-transparent dark:from-neutral-100 dark:to-neutral-400 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
             MERN Project Generator{" "}
             <SparklesText className="text-color-2" text="CLI" />
           </h1>
@@ -38,12 +38,12 @@ const Hero = () => {
           />
 
           {/* Call to Action Buttons */}
-          <div className="mt-8 flex justify-center gap-4">
-            <Button size="lg" className="gap-2">
+          <div className="mt-8 flex flex-wrap justify-center gap-4 px-4">
+            <Button size="lg" className="gap-2 w-full sm:w-auto">
               <Package className="h-4 w-4" />
               View on NPM
             </Button>
-            <Button size="lg" variant="outline" className="gap-2">
+            <Button size="lg" variant="outline" className="gap-2 w-full sm:w-auto">
               <Github className="h-4 w-4" />
               Star on GitHub
             </Button>

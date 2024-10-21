@@ -1,4 +1,3 @@
-
 import { ArrowRight, Command } from "lucide-react";
 import Heading from "@/components/ui/Heading";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,16 +19,17 @@ const TerminalWindow = ({ title, commands }) => (
     <CardContent className="p-0">
       <div className="font-mono text-sm">
         {commands.map((cmd, index) => (
-          <div key={index} className="border-b border-neutral-800 last:border-0">
+          <div
+            key={index}
+            className="border-b border-neutral-800 last:border-0"
+          >
             <div className="space-y-2 p-4">
               <div className="flex items-center space-x-2 text-green-400">
                 <span>$</span>
                 <span>{cmd.command}</span>
               </div>
               {cmd.output && (
-                <div className="text-neutral-400">
-                  {cmd.output}
-                </div>
+                <div className="text-neutral-400">{cmd.output}</div>
               )}
             </div>
           </div>
@@ -45,22 +45,24 @@ const UsageExample = () => {
     commands: [
       {
         command: "devcli create mern-blog",
-        output: "✓ Creating MERN project: mern-blog\n✓ Installing dependencies\n✓ Project setup complete!"
+        output:
+          "✓ Creating MERN project: mern-blog\n✓ Installing dependencies\n✓ Project setup complete!",
       },
       {
-        command: "devcli mongoose-schema BlogPost title:String content:String author:String",
-        output: "✓ Generated BlogPost schema\n✓ Created API routes"
+        command:
+          "devcli mongoose-schema BlogPost title:String content:String author:String",
+        output: "✓ Generated BlogPost schema\n✓ Created API routes",
       },
       {
         command: "devcli mongodb-connect --p mern-blog-db",
-        output: "✓ Connected to MongoDB\n✓ Database: mern-blog-db"
-      }
-    ]
+        output: "✓ Connected to MongoDB\n✓ Database: mern-blog-db",
+      },
+    ],
   };
 
   return (
-    <section 
-      id="examples" 
+    <section
+      id="examples"
       aria-label="usage-section"
       className="relative py-16 sm:py-24"
     >
@@ -72,7 +74,7 @@ const UsageExample = () => {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center mb-16">
-            <Heading title="Usage Story" />
+          <Heading title="Usage Story" />
           <p className="text-center text-neutral-600 dark:text-neutral-400 max-w-2xl">
             Create a full-stack MERN blog in minutes with just a few commands.
             <br />
@@ -81,26 +83,28 @@ const UsageExample = () => {
             </span>
           </p>
         </div>
-        
+
         <div className="max-w-3xl mx-auto">
-          <TerminalWindow 
-            title={blogExample.title} 
-            commands={blogExample.commands} 
+          <TerminalWindow
+            title={blogExample.title}
+            commands={blogExample.commands}
           />
-          
-          <div className="mt-8 flex justify-center">
-            <Card className="border-none bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-4">
+
+          <div className="mt-8 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
+            <Card className="border-none bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-4 w-full md:w-auto">
               <p className="text-sm text-center text-neutral-600 dark:text-neutral-400">
-                Your blog project is ready for development!     
+                Your blog project is ready for development!
               </p>
             </Card>
-            <RainbowButton className="ml-4"
-            onClick={() => window.location.href = "/command-showcase"}>
-            
-                <Command />
-                Show All Availabe Commands
-                <ArrowRight />
-                </RainbowButton>
+
+            <RainbowButton
+              className="mt-4 md:mt-0 md:ml-4 w-full md:w-auto flex justify-center items-center"
+              onClick={() => (window.location.href = "/command-showcase")}
+            >
+              <Command className="mr-2" />
+              Show All Available Commands
+              <ArrowRight className="ml-2" />
+            </RainbowButton>
           </div>
         </div>
       </div>

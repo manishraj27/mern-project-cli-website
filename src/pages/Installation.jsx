@@ -19,7 +19,8 @@ const Installation = () => {
         <div className="flex justify-center items-center mb-2">
           <Heading title="Installation" />
         </div>
-
+       
+        
         {/* CLICommandDisplay component to show commands */}
         <CLICommandDisplay commands={commands} />
 

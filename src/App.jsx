@@ -1,28 +1,33 @@
-import { ThemeProvider } from './components/ThemeProvider'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "./components/ThemeProvider";
+import CommandShowcase from "./pages/CommandShowcase";
 
-import CommandsPage from './pages/CommandsPage'
-import Features from './pages/Features'
-import Hero from './pages/Hero'
+import TheLandingPage from "./pages/TheLandingPage";
+import Navbar from "./pages/NavBar";
 
-import Navbar from './pages/NavBar'
-// import SaasLanding from './pages/SaasLanding'
-
-function App() {
- 
-
+const App=()=> {
   return (
-    <>
-     {/* <SaasLanding /> */}
-     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-     <Navbar />
-     <Hero />
-     <Features />
-     {/* <Installation/>
-     <Commands/> */}
-     <CommandsPage/>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <Navbar />
+      {/* <Hero />
+      <Features />
+      <CommandsPage />
+      <StructurePage />
+      <UsageExample />
+      <Stats /> */}
+      <Routes>
+        <Route path="/" element={<TheLandingPage />} />
+        <Route path="/command-showcase" element={<CommandShowcase />} />
+      </Routes>
     </ThemeProvider>
-    </>
-  )
-}
+  );
+};
 
-export default App
+const AppWrapper = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+
+export default AppWrapper;

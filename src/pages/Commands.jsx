@@ -29,6 +29,10 @@ const commandList = [
     command: 'devcli mongodb-connect --p customDBName',
     description: 'Connects your MongoDB instance with a custom project name.',
   },
+  {
+    command: 'devcli mongoose-schema <schema_name> <field1>:<type> <field2>:<type> ...',
+    description: 'Generates a Mongoose schema with the given schema name and fields.',
+  }
 ];
 
 const Commands = () => {

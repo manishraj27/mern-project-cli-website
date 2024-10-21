@@ -7,17 +7,19 @@ import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import NumberTicker from "@/components/ui/number-ticker";
 // import HyperText from "@/components/ui/hyper-text";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
+  const navigate = useNavigate();
 
   const menuItems = [
-    { label: "Features", href: "#features" },
-    { label: "Installation", href: "#installation" },
-    { label: "Commands", href: "#commands" },
-    { label: "Usage Examples", href: "#examples" },
+    { label: "Features", href: "features" },
+    { label: "Installation", href: "installation" },
+    { label: "Commands", href: "commands" },
+    { label: "Usage Examples", href: "examples" },
   ];
 
   const socialLinks = [
@@ -91,6 +93,22 @@ const Navbar = () => {
     }
   }, [isOpen]);
 
+  const handleScroll = (sectionId) => {
+    if (window.location.pathname !== "/") {
+      // Navigate to the landing page first
+      navigate(`/#${sectionId}`);
+    } else {
+      // Scroll to section on the landing page
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.error(`Section with id ${sectionId} not found`);
+      }
+    }
+  };
+
+  
   return (
     <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
       <div className="border-b py-4">
@@ -148,7 +166,7 @@ const Navbar = () => {
                     className="text-lg font-medium hover:text-primary transition-colors"
                     onClick={() => {
                       setIsOpen(false);
-                      document.querySelector(item.href).scrollIntoView({ behavior: 'smooth' });
+                      (item.href).scrollIntoView({ behavior: 'smooth' });
                     }}
                   >
                     {item.label}
@@ -188,12 +206,12 @@ const Navbar = () => {
             </div>
              
             <nav className="flex items-center gap-2">
-              {menuItems.map((item) => (
+             {menuItems.map((item) => (
                 <Button
                   key={item.label}
                   variant="ghost"
                   className="text-sm font-medium hover:bg-accent"
-                  onClick={() =>  document.querySelector(item.href).scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => handleScroll(item.href)}
                 >
                   {item.label}
                 </Button>

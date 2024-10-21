@@ -66,7 +66,8 @@ export default {
   			'background-position-spin': 'background-position-spin 3000ms infinite alternate',
   			marquee: 'marquee var(--duration) infinite linear',
   			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
-  			grid: 'grid 15s linear infinite'
+  			grid: 'grid 15s linear infinite',
+  			shine: 'shine var(--duration) infinite linear'
   		},
   		keyframes: {
   			rainbow: {
@@ -115,6 +116,17 @@ export default {
   				},
   				'100%': {
   					transform: 'translateY(0)'
+  				}
+  			},
+  			shine: {
+  				'0%': {
+  					'background-position': '0% 0%'
+  				},
+  				'50%': {
+  					'background-position': '100% 100%'
+  				},
+  				to: {
+  					'background-position': '0% 0%'
   				}
   			}
   		}

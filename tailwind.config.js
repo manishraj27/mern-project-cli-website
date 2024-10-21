@@ -62,7 +62,10 @@ export default {
   		},
   		animation: {
   			rainbow: 'rainbow var(--speed, 2s) infinite linear',
-  			'shiny-text': 'shiny-text 8s infinite'
+  			'shiny-text': 'shiny-text 8s infinite',
+  			'background-position-spin': 'background-position-spin 3000ms infinite alternate',
+  			marquee: 'marquee var(--duration) infinite linear',
+  			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
   		},
   		keyframes: {
   			rainbow: {
@@ -79,6 +82,30 @@ export default {
   				},
   				'30%, 60%': {
   					'background-position': 'calc(100% + var(--shiny-width)) 0'
+  				}
+  			},
+  			'background-position-spin': {
+  				'0%': {
+  					backgroundPosition: 'top center'
+  				},
+  				'100%': {
+  					backgroundPosition: 'bottom center'
+  				}
+  			},
+  			marquee: {
+  				from: {
+  					transform: 'translateX(0)'
+  				},
+  				to: {
+  					transform: 'translateX(calc(-100% - var(--gap)))'
+  				}
+  			},
+  			'marquee-vertical': {
+  				from: {
+  					transform: 'translateY(0)'
+  				},
+  				to: {
+  					transform: 'translateY(calc(-100% - var(--gap)))'
   				}
   			}
   		}

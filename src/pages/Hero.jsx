@@ -4,6 +4,7 @@ import AnimatedShinyText from "@/components/ui/animated-shiny-text";
 import GridPattern from "@/components/ui/grid-pattern";
 import { cn } from "@/lib/utils";
 import SparklesText from "@/components/ui/sparkles-text";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 const Hero = () => {
   return (
@@ -35,18 +36,22 @@ const Hero = () => {
 
             {/* Call to Action Buttons */}
             <div className="mt-12 flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="gap-2 w-full sm:w-auto">
+              <RainbowButton size="lg" className="gap-2 w-full sm:w-auto"
+              onClick={() => window.open("https://www.npmjs.com/package/mern-project-cli", "_blank")}
+              >
                 <Package className="h-4 w-4" />
                 View on NPM
-              </Button>
-              <Button size="lg" variant="outline" className="gap-2 w-full sm:w-auto">
+              </RainbowButton>
+              <Button size="lg" variant="outline" className="gap-2 w-full sm:w-auto"
+              onClick={() => window.open("https://github.com/manishraj27/mern-project-cli", "_blank")}
+              >
                 <Github className="h-4 w-4" />
                 Star on GitHub
               </Button>
             </div>
           </div>
         </div>
-
+        
         {/* Background Pattern */}
         <GridPattern
           squares={[

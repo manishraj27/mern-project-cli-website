@@ -22,6 +22,13 @@ const Navbar = () => {
     { label: "Usage Examples", href: "examples" },
   ];
 
+  const mobMenuItems = [
+    { label: "Features", href: "#features" },
+    { label: "Installation", href: "#installation" },
+    { label: "Commands", href: "#commands" },
+    { label: "Usage Examples", href: "#examples" },
+  ];
+
   const socialLinks = [
     { 
       icon: <User className="h-5 w-5" />, 
@@ -108,6 +115,20 @@ const Navbar = () => {
     }
   };
 
+  const handleMenuClick = (item) => {
+    // Check if you're already on the landing page
+    if (location.pathname === "/") {
+      // Scroll to the section on the current page
+      const section = document.querySelector(item.href);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Navigate to the landing page and include the section ID in the URL
+      navigate(`/${item.href}`);
+    }
+    setIsOpen(false);
+  };
   
   return (
     <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
@@ -158,16 +179,13 @@ const Navbar = () => {
             className="fixed lg:hidden top-[73px] left-0 w-full h-[calc(100vh-73px)] bg-background transform -translate-x-full"
           >
             <div className="p-6 space-y-6">
-              <nav className="flex flex-col space-y-4">
-                {menuItems.map((item) => (
+            <nav className="flex flex-col space-y-4">
+                {mobMenuItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
                     className="text-lg font-medium hover:text-primary transition-colors"
-                    onClick={() => {
-                      setIsOpen(false);
-                      (item.href).scrollIntoView({ behavior: 'smooth' });
-                    }}
+                    onClick={() => handleMenuClick(item)}
                   >
                     {item.label}
                   </a>

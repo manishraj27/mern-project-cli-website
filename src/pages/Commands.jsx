@@ -1,5 +1,7 @@
 import Heading from "@/components/ui/Heading";
 import CLICommandDesc from "./CLICommandDesc";
+import DotPattern from "@/components/ui/dot-pattern";
+import { cn } from "@/lib/utils";
 
 // Sample commands with descriptions
 const commandList = [
@@ -34,7 +36,7 @@ const Commands = () => {
     <section
       id="commands"
       aria-label="commands-section"
-      className="py-16 sm:py-24"
+      className="py-16 sm:py-24 "
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center items-center mb-12">
@@ -42,7 +44,18 @@ const Commands = () => {
         </div>
         <CLICommandDesc commands={commandList}/>
         {/* <CLICommandDisplay commands={commandList} /> */}
+      
       </div>
+      <DotPattern
+        width={20}
+        height={20}
+        cx={1}
+        cy={1}
+        cr={1}
+        className={cn(
+          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] ",
+        )}
+      />
     </section>
   );
 };

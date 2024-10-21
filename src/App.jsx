@@ -4,6 +4,7 @@ import CommandShowcase from "./pages/CommandShowcase";
 
 import TheLandingPage from "./pages/TheLandingPage";
 import Navbar from "./pages/NavBar";
+import Footer from "./pages/Footer";
 
 const App=()=> {
   return (
@@ -19,6 +20,7 @@ const App=()=> {
         <Route path="/" element={<TheLandingPage />} />
         <Route path="/command-showcase" element={<CommandShowcase />} />
       </Routes>
+      <Footer />
     </ThemeProvider>
   );
 };

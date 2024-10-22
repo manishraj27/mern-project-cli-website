@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/ModeToggle";
 import { RainbowButton } from "@/components/ui/rainbow-button";
-import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import { Star, User, ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import NumberTicker from "@/components/ui/number-ticker";
 // import HyperText from "@/components/ui/hyper-text";
 import { useNavigate } from 'react-router-dom';
+
+import { Icon } from '@iconify-icon/react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +48,7 @@ const Navbar = () => {
       href: "https://www.linkedin.com/in/manishraj27"
     },
     { 
-      icon: <TwitterLogoIcon className="h-5 w-5" />, 
+      icon: <Icon icon="hugeicons:new-twitter" className="h-4 w-5" />, 
       label: "X",
       href: "https://x.com/manish_rraaj"
     },
@@ -200,7 +202,7 @@ const Navbar = () => {
                     <GitHubLogoIcon className="w-5 h-5" />
                     <span className="mx-2">Star on GitHub</span>
                     <Star className="w-4 h-4" />
-                    <NumberTicker className="text-color-2 ml-1" value={24} />
+                    <NumberTicker className="text-color-2 ml-1" value={6} />
                   </RainbowButton>
                   
                   <Button 
@@ -243,7 +245,7 @@ const Navbar = () => {
                 <GitHubLogoIcon className="w-5 h-5" />
                 <span className="mx-2 text">Star on GitHub</span>
                 <Star className="w-4 h-4" />
-                <NumberTicker className="text-color-2 ml-1" value={24} />
+                <NumberTicker className="text-color-2 ml-1" value={6} />
               </RainbowButton>
               
               <Button

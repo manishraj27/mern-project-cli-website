@@ -131,7 +131,23 @@ const Navbar = () => {
     }
     setIsOpen(false);
   };
-  
+
+
+  const [gitStars, setGitStars] = useState(0);
+
+  useEffect(() => {
+    const fetchGitStars = async () => {
+      try {
+        const response = await fetch('https://api.github.com/repos/manishraj27/mern-project-cli');
+        const data = await response.json();
+        setGitStars(data.stargazers_count);
+      } catch (error) {
+        console.error('Error fetching GitHub stars:', error);
+      }
+    };
+    fetchGitStars();
+  }, []);
+
   return (
     <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
       <div className="border-b py-4">
@@ -202,7 +218,7 @@ const Navbar = () => {
                     <GitHubLogoIcon className="w-5 h-5" />
                     <span className="mx-2">Star on GitHub</span>
                     <Star className="w-4 h-4" />
-                    <NumberTicker className="text-color-2 ml-1" value={6} />
+                    <NumberTicker className="text-color-2 ml-1" value={gitStars} />
                   </RainbowButton>
                   
                   <Button 
@@ -245,7 +261,7 @@ const Navbar = () => {
                 <GitHubLogoIcon className="w-5 h-5" />
                 <span className="mx-2 text">Star on GitHub</span>
                 <Star className="w-4 h-4" />
-                <NumberTicker className="text-color-2 ml-1" value={6} />
+                <NumberTicker className="text-color-2 ml-1" value={gitStars} />
               </RainbowButton>
               
               <Button

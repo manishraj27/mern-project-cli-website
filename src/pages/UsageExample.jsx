@@ -57,6 +57,14 @@ const UsageExample = () => {
         command: "devcli mongodb-connect --p mern-blog-db",
         output: "✓ Connected to MongoDB\n✓ Database: mern-blog-db",
       },
+      {
+        command: "devcli add-redux --init",
+        output: "✓ Added Redux to the project\n✓ Initial setup complete",
+      },
+      {
+        command: '"devcli add-redux --slice blog --actions="create,delete" --state="loading:Boolean,posts:Array"',
+        output: "✓ Added Redux slice: blog\n✓ Added actions: create, delete\n✓ Added state: loading, posts",
+      }
     ],
   };
 

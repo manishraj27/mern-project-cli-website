@@ -1,26 +1,9 @@
 
 import Heading from "@/components/ui/Heading";
 import { Card, CardContent } from "@/components/ui/card";
+import CommandBlock from "./CommandBlock";
 
-const CommandBlock = ({ command, description }) => (
-  <Card className="group relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
-    <CardContent className="p-6">
-      <div className="flex flex-col space-y-3">
-        <div className="relative rounded-lg bg-neutral-950 p-4 font-mono text-sm text-neutral-50">
-          <div className="absolute top-3 left-3 flex space-x-2">
-            <div className="h-2.5 w-2.5 rounded-full bg-red-500"></div>
-            <div className="h-2.5 w-2.5 rounded-full bg-yellow-500"></div>
-            <div className="h-2.5 w-2.5 rounded-full bg-green-500"></div>
-          </div>
-          <pre className="mt-4 text-neutral-100">{command}</pre>
-        </div>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {description}
-        </p>
-      </div>
-    </CardContent>
-  </Card>
-);
+
 
 const CommandShowcase = () => {
   const commands = [
@@ -73,6 +56,31 @@ const CommandShowcase = () => {
         {
           command: "devcli mongoose-schema User name:String email:String age:Number",
           description: "Generate a Mongoose schema for User with specified fields and types"
+        }
+      ]
+    },
+    {
+      title: "Frontend - Redux Integration", 
+      steps: [
+        {
+          command: "devcli add-redux --init",
+          description: "Add Redux to your project with initial setup"
+        },
+        {
+          command: "devcli add-redux --slice user",
+          description: "Add a Redux slice with the specified name"
+        },
+        {
+          command: "devcli add-redux --slice user --actions='login,logout'",
+          description: "Add Redux actions to the specified slice"
+        },
+        {
+          command: "devcli add-redux --slice user --state='name:String,email:String'",
+          description: "Add Redux state to the specified slice"
+        },
+        {
+          command: "devcli add-redux --slice user --actions='login,logout' --state='name:String,email:String'",
+          description: "Add Redux actions and state to the specified slice"
         }
       ]
     }

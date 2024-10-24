@@ -1,65 +1,81 @@
 import Heading from "@/components/ui/Heading";
 import CLICommandDesc from "./CLICommandDesc";
-import DotPattern from "@/components/ui/dot-pattern";
-import { cn } from "@/lib/utils";
 
-// Sample commands with descriptions
-const commandList = [
-  {
-    command: 'devcli create <project_name>',
-    description: 'Creates a new MERN project with the given project name.',
-  },
-  {
-    command: 'npm run dev',
-    description: 'Runs the backend server in development mode.',
-  },
-  {
-    command: 'cd ../frontend',
-    description: 'Navigates to the frontend directory of your project.',
-  },
-  {
-    command: 'npm start',
-    description: 'Starts the React frontend in development mode.',
-  },
-  {
-    command: 'devcli mongodb-connect',
-    description: 'Automatically connects your project to a local MongoDB instance.',
-  },
-  {
-    command: 'devcli mongodb-connect --p customDBName',
-    description: 'Connects your MongoDB instance with a custom project name.',
-  },
-  {
-    command: 'devcli mongoose-schema <schema_name> <field1>:<type> <field2>:<type> ...',
-    description: 'Generates a Mongoose schema with the given schema name and fields.',
-  }
-];
+const commandList = {
+  initial: [
+    {
+      command: 'devcli create <project_name>',
+      description: 'Creates a new MERN project with the given project name.',
+    },
+  ],
+  backend: [
+    {
+      command: 'devcli mongodb-connect',
+      description: 'Automatically connects your project to a local MongoDB instance.',
+    },
+    {
+      command: 'devcli mongodb-connect --p customDBName',
+      description: 'Connects your MongoDB instance with a custom project name.',
+    },
+    {
+      command: 'devcli mongoose-schema <schema_name> <field1>:<type> <field2>:<type> ...',
+      description: 'Generates a Mongoose schema with the given schema name and fields.',
+    },
+  ],
+  frontend: [
+    {
+      command: 'devcli add-redux --init',
+      description: 'Adds Redux to your project with initial setup.',
+    },
+    {
+      command: 'devcli add-redux --slice <sliceName> ',
+      description: 'Adds a Redux slice with the given slice name.',
+    },
+    {
+      command: 'devcli add-redux --slice <slice_name> --actions="action1,action2"',
+      description: 'Adds a Redux action to the specified slice.',
+    },
+    {
+      command: 'devcli add-redux --slice <slice_name> --state="field1:type,field2:type"',
+      description: 'Adds a Redux state to the specified slice.',
+    },
+  ]
+};
 
 const Commands = () => {
   return (
     <section
       id="commands"
       aria-label="commands-section"
-      className="py-16 sm:py-24 "
+      className="relative py-16 sm:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center items-center mb-12">
           <Heading title="CLI Commands" />
         </div>
-        <CLICommandDesc commands={commandList}/>
-        {/* <CLICommandDisplay commands={commandList} /> */}
-      
+
+        {/* Initial Setup Commands */}
+        <div className="mb-12">
+          <h3 className="text-2xl text-center font-semibold mb-6">Project Setup</h3>
+          <div className="max-w-2xl mx-auto">
+            <CLICommandDesc commands={commandList.initial} />
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Backend Commands */}
+          <div>
+            <h3 className="text-2xl text-center font-semibold mb-6">Backend Commands</h3>
+            <CLICommandDesc commands={commandList.backend} />
+          </div>
+          
+          {/* Frontend Commands */}
+          <div>
+            <h3 className="text-2xl text-center font-semibold mb-6">Frontend Commands</h3>
+            <CLICommandDesc commands={commandList.frontend} />
+          </div>
+        </div>
       </div>
-      <DotPattern
-        width={20}
-        height={20}
-        cx={1}
-        cy={1}
-        cr={1}
-        className={cn(
-          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] ",
-        )}
-      />
     </section>
   );
 };

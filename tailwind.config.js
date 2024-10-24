@@ -67,7 +67,8 @@ export default {
   			marquee: 'marquee var(--duration) infinite linear',
   			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
   			grid: 'grid 15s linear infinite',
-  			shine: 'shine var(--duration) infinite linear'
+  			shine: 'shine var(--duration) infinite linear',
+  			pulse: 'pulse var(--duration) ease-out infinite'
   		},
   		keyframes: {
   			rainbow: {
@@ -127,6 +128,14 @@ export default {
   				},
   				to: {
   					'background-position': '0% 0%'
+  				}
+  			},
+  			pulse: {
+  				'0%, 100%': {
+  					boxShadow: '0 0 0 0 var(--pulse-color)'
+  				},
+  				'50%': {
+  					boxShadow: '0 0 0 8px var(--pulse-color)'
   				}
   			}
   		}

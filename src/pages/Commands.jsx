@@ -89,18 +89,24 @@ const Commands = () => {
             <CLICommandDesc commands={commandList.frontend} />
           </div>
         </div>
-      <div className="flex justify-center mt-20">
-        <PulsatingButton
-          className="mt-4 md:mt-0 md:ml-4 w-full md:w-auto flex justify-center items-center"
-          onClick={() => (window.location.href = "/command-showcase")}
-        >
-          <div className="flex items-center space-x-3">
-            <Command className="w-5 h-5" />
-            <span className="text-lg">Show All Available Commands</span>
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </div>
-        </PulsatingButton>
-      </div>
+        <div className="flex justify-center mt-20">
+          <PulsatingButton
+            className="mt-4 md:mt-0 md:ml-4 w-full md:w-auto flex justify-center items-center group relative bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            onClick={() => (window.location.href = "/command-showcase")}
+            pulseColor="255, 99, 71" // RGB for pulsing waves (e.g., red-orange color)
+          >
+            <div className="flex items-center space-x-3">
+              <Command className="w-5 h-5 text-white" />
+              <span className="text-lg">Show All Available Commands</span>
+              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" />
+            </div>
+
+            {/* Glowing Border Effect */}
+            <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 opacity-50 blur-lg group-hover:opacity-100 transition-opacity duration-300"></span>
+          </PulsatingButton>
+        </div>
+
+
       </div>
 
     </section>

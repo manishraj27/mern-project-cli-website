@@ -1,15 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
-import { Copy, CheckCircle2 } from 'lucide-react'; // Icons for copy and success
+import { Copy, CheckCircle2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const CommandBlock = ({ command, description }) => {
   const [hovered, setHovered] = useState(false);
   const [shouldScroll, setShouldScroll] = useState(false);
-  const [copied, setCopied] = useState(false); // Track copy status
+  const [copied, setCopied] = useState(false);
   const commandRef = useRef(null);
 
   useEffect(() => {
-    // Check if the command needs scrolling
     const element = commandRef.current;
     if (element) {
       const isOverflowing = element.scrollWidth > element.clientWidth;
@@ -20,7 +19,7 @@ const CommandBlock = ({ command, description }) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(command);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000); // Reset the copied state after 2 seconds
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -34,24 +33,28 @@ const CommandBlock = ({ command, description }) => {
               <div className="h-2.5 w-2.5 rounded-full bg-yellow-500"></div>
               <div className="h-2.5 w-2.5 rounded-full bg-green-500"></div>
             </div>
+
             {/* Command and Copy Section */}
-            <div className="relative flex">
-              {/* Command Section */}
-              <div
-                ref={commandRef}
-                className={`flex-1 whitespace-nowrap ${
-                  hovered && shouldScroll
-                    ? 'animate-scroll transition-transform duration-[20s] ease-linear'
-                    : 'truncate'
-                }`}
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-              >
-                <pre className="mt-4 text-neutral-100">{command}</pre>
+            <div className="relative flex items-center">
+              {/* Command Section with overflow container */}
+              <div className="relative flex-1 overflow-hidden">
+                <div
+                  ref={commandRef}
+                  className={`whitespace-nowrap ${
+                    hovered && shouldScroll
+                      ? 'animate-scroll transition-transform duration-[20s] ease-linear'
+                      : 'truncate'
+                  }`}
+                  onMouseEnter={() => setHovered(true)}
+                  onMouseLeave={() => setHovered(false)}
+                >
+                  <pre className="mt-4 text-neutral-100">{command}</pre>
+                </div>
+                {shouldScroll && !hovered && (
+                  <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-r from-transparent to-neutral-950"></div>
+                )}
               </div>
-              {shouldScroll && !hovered && (
-                <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-r from-transparent to-neutral-950"></div>
-              )}
+
               {/* Fixed Copy Button */}
               <div className="ml-2 shrink-0">
                 <button
@@ -67,26 +70,29 @@ const CommandBlock = ({ command, description }) => {
               </div>
             </div>
           </div>
-          {/* Description Section */}
+
+          {/* Description */}
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
             {description}
           </p>
         </div>
       </CardContent>
-      {/* Scroll Animation */}
+
       <style jsx global>{`
         @keyframes scroll {
           0% {
             transform: translateX(0);
           }
           50% {
-            transform: translateX(-50%);
+            transform: translateX(calc(-50%));
           }
           100% {
             transform: translateX(0);
           }
         }
         .animate-scroll {
+          display: inline-block;
+          white-space: nowrap;
           animation: scroll 20s linear infinite;
         }
       `}</style>

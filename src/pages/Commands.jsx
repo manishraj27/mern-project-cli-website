@@ -1,5 +1,7 @@
 import Heading from "@/components/ui/Heading";
 import CLICommandDesc from "./CLICommandDesc";
+import { RainbowButton } from "@/components/ui/rainbow-button";
+import { ArrowRight, Command } from "lucide-react";
 
 const commandList = {
   initial: [
@@ -76,6 +78,15 @@ const Commands = () => {
           </div>
         </div>
       </div>
+      <RainbowButton
+              className="mt-4 md:mt-0 md:ml-4 w-full md:w-auto flex justify-center items-center"
+              onClick={() => (window.location.href = "/command-showcase")}
+            >
+              <Command className="mr-2" />
+              Show All Available Commands
+              <ArrowRight className="ml-2" />
+            </RainbowButton>
+      
     </section>
   );
 };

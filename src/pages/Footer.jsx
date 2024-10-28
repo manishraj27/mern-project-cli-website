@@ -150,7 +150,7 @@ const Footer = () => {
               </Button>
             )}
             <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {version}
+              v{`${version}`}
             </p>
           </div>
         </div>

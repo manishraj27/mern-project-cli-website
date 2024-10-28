@@ -10,6 +10,25 @@ import { useNavigate } from 'react-router-dom';
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
+  const [version, setVersion] = useState("2.0.6");
+
+  useEffect(() => {
+    // Fetch the latest version from npm
+    const fetchVersion = async () => {
+      try {
+        const response = await fetch('https://registry.npmjs.org/mern-project-cli');
+        const data = await response.json();
+        const latestVersion = data['dist-tags'].latest;
+        setVersion(latestVersion);
+      } catch (error) {
+        console.error("Failed to fetch version:", error);
+      }
+    };
+
+    fetchVersion();
+  }, []);
+
+
   useEffect(() => {
     const toggleVisibility = () => {
       const footer = document.getElementById('footer');
@@ -131,7 +150,7 @@ const Footer = () => {
               </Button>
             )}
             <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              v2.0.2
+              {version}
             </p>
           </div>
         </div>

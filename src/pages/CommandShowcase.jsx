@@ -1,6 +1,5 @@
 
 import Heading from "@/components/ui/Heading";
-import { Card, CardContent } from "@/components/ui/card";
 import CommandBlock from "./CommandBlock";
 
 
@@ -28,12 +27,25 @@ const CommandShowcase = () => {
           description: "Create a new MERN project with the specified name"
         },
         {
-          command: "npm run dev",
+          command: "cd backend && npm run dev",
           description: "Start the backend server in development mode"
         },
         {
-          command: "cd ../frontend && npm start",
+          command: "cd frontend && npm start",
           description: "Navigate to frontend directory and start the React development server"
+        }
+      ]
+    },
+    {
+      title: "Frontend Project Creation",
+      steps: [
+        {
+          command: "devcli create-frontend my-project --shadcn",
+          description: "Create a new React project with Shadcn UI and Tailwind CSS"
+        },
+        {
+          command: "devcli create-frontend my-project --vite",
+          description: "Create a new React project with Vite and Tailwind CSS"
         }
       ]
     },
@@ -60,7 +72,7 @@ const CommandShowcase = () => {
       ]
     },
     {
-      title: "Frontend - Redux Integration", 
+      title: "Redux Integration", 
       steps: [
         {
           command: "devcli add-redux --init",
@@ -81,6 +93,27 @@ const CommandShowcase = () => {
         {
           command: "devcli add-redux --slice user --actions='login,logout' --state='name:String,email:String'",
           description: "Add Redux actions and state to the specified slice"
+        }
+      ]
+    },
+    {
+      title: "Docker Setup",
+      steps: [
+        {
+          command: "devcli init-dockerfiles",
+          description: "Generate Dockerfiles for backend, frontend and docker-compose.yml"
+        },
+        {
+          command: "docker-compose up",
+          description: "Start all services (backend, frontend, mongodb)"
+        },
+        {
+          command: "docker-compose down",
+          description: "Stop all services"
+        },
+        {
+          command: "docker-compose up --build",
+          description: "Rebuild and start all services"
         }
       ]
     }

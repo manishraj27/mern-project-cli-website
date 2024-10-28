@@ -1,54 +1,48 @@
 import Heading from "@/components/ui/Heading";
 import CLICommandDesc from "./CLICommandDesc";
-import { RainbowButton } from "@/components/ui/rainbow-button";
 import { ArrowRight, Command } from "lucide-react";
 import PulsatingButton from "@/components/ui/pulsating-button";
 
-const commandList = {
-  initial: [
-    {
-      command: "devcli create <project_name>",
-      description: "Creates a new MERN project with the given project name.",
-    },
-  ],
-  backend: [
-    {
-      command: "devcli mongodb-connect",
-      description:
-        "Automatically connects your project to a local MongoDB instance.",
-    },
-    {
-      command: "devcli mongodb-connect --p customDBName",
-      description: "Connects your MongoDB instance with a custom project name.",
-    },
-    {
-      command:
-        "devcli mongoose-schema <schema_name> <field1>:<type> <field2>:<type> ...",
-      description:
-        "Generates a Mongoose schema with the given schema name and fields.",
-    },
-  ],
-  frontend: [
-    {
-      command: "devcli add-redux --init",
-      description: "Adds Redux to your project with initial setup.",
-    },
-    {
-      command: "devcli add-redux --slice <sliceName> ",
-      description: "Adds a Redux slice with the given slice name.",
-    },
-    {
-      command:
-        'devcli add-redux --slice <slice_name> --actions="action1,action2"',
-      description: "Adds a Redux action to the specified slice.",
-    },
-    {
-      command:
-        'devcli add-redux --slice <slice_name> --state="field1:type,field2:type"',
-      description: "Adds a Redux state to the specified slice.",
-    },
-  ],
-};
+const essentialCommands = [
+  {
+    title: "Quick Start",
+    commands: [
+      {
+        command: "devcli create <project_name>",
+        description: "Create a new MERN project instantly",
+      },
+      {
+        command: "devcli create-frontend <project_name> --shadcn",
+        description: "Create a new React frontend with Shadcn UI",
+      },
+    ],
+  },
+  {
+    title: "Core Features",
+    commands: [
+      {
+        command: "devcli mongodb-connect",
+        description: "Connect to MongoDB with default configuration",
+      },
+      {
+        command: "devcli mongoose-schema <schema_name> field:type",
+        description: "Generate Mongoose schema quickly",
+      },
+      {
+        command: "devcli add-redux --init",
+        description: "Add Redux to your project with initial setup",
+      },
+      {
+        command: "devcli add-redux --slice user --actions='login,logout' --state='name:String,email:String'",
+        description: "Add Redux slice with actions and state",
+      },
+      {
+        command: "devcli init-dockerfiles",
+        description: "Initialize Dockerfiles for your project",
+      }
+    ],
+  },
+];
 
 const Commands = () => {
   return (
@@ -58,40 +52,28 @@ const Commands = () => {
       className="relative py-16 sm:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center items-center mb-12">
-          <Heading title="CLI Commands" />
+        <div className="flex flex-col items-center mb-12">
+          <Heading title="Essential Commands" />
+          <p className="mt-4 text-center text-neutral-600 dark:text-neutral-400 max-w-2xl">
+            Get started with these commonly used commands. Need more? Check out
+            our full command reference.
+          </p>
         </div>
 
-        {/* Initial Setup Commands */}
-        <div className="mb-12">
-          <h3 className="text-2xl text-center font-semibold mb-6">
-            Project Setup
-          </h3>
-          <div className="max-w-2xl mx-auto">
-            <CLICommandDesc commands={commandList.initial} />
-          </div>
+        <div className="space-y-12">
+          {essentialCommands.map((section, index) => (
+            <div key={index} className="max-w-3xl mx-auto">
+              <h3 className="text-2xl text-center font-semibold mb-6">
+                {section.title}
+              </h3>
+              <CLICommandDesc commands={section.commands} />
+            </div>
+          ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Backend Commands */}
-          <div>
-            <h3 className="text-2xl text-center font-semibold mb-6">
-              Backend Commands
-            </h3>
-            <CLICommandDesc commands={commandList.backend} />
-          </div>
-
-          {/* Frontend Commands */}
-          <div>
-            <h3 className="text-2xl text-center font-semibold mb-6">
-              Frontend Commands
-            </h3>
-            <CLICommandDesc commands={commandList.frontend} />
-          </div>
-        </div>
         <div className="flex justify-center mt-20">
           <PulsatingButton
-          pulseColor="255, 99, 71"
+            pulseColor="255, 99, 71"
             className="mt-4 md:mt-0 md:ml-4 w-full md:w-auto flex justify-center items-center group relative bg-gradient-to-r from-purple-500  text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
             onClick={() => (window.location.href = "/command-showcase")}
           >
@@ -102,10 +84,7 @@ const Commands = () => {
             </div>
           </PulsatingButton>
         </div>
-
-
       </div>
-
     </section>
   );
 };

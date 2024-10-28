@@ -1,4 +1,4 @@
-import { Database, Settings2, Blocks, Zap, Code } from "lucide-react";
+import { Database, Settings2, Blocks, Zap, Code, Monitor, Container } from "lucide-react";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import Heading from "@/components/ui/Heading";
 import Marquee from "@/components/ui/marquee";
@@ -76,6 +76,7 @@ const features = [
       </div>
     ),
   },
+
   {
     Icon: Database,
     name: "MongoDB Integration",
@@ -83,7 +84,44 @@ const features = [
     href: "#mongodb",
     cta: "devcli mongodb-connect",
     className: "col-span-3 lg:col-span-1",
-
+  },
+  {
+    Icon: Monitor,
+    name: "Modern Frontend Setup",
+    description: "Initialize your frontend with Vite + Tailwind or ShadcN UI components. Get a beautiful, responsive UI out of the box.",
+    href: "#frontend",
+    cta: "devcli frontend-init",
+    className: "col-span-3 lg:col-span-1",
+    background: (
+      <div className="absolute inset-0 flex items-center justify-center opacity-50">
+        <div className="grid grid-cols-2 gap-4 p-4 transform transition-all duration-300 ease-out group-hover:scale-105">
+          {['shadcn/ui', 'tailwind', 'vite', 'components'].map((tech) => (
+            <div key={tech} className="text-xs font-mono p-2 rounded-lg bg-gray-900/10 dark:bg-gray-50/10">
+              {tech}
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    Icon: Container,
+    name: "Docker Integration",
+    description: "Generate production-ready Dockerfiles and docker-compose configurations with a single command.",
+    href: "#docker",
+    cta: "devcli docker-init",
+    className: "col-span-3 lg:col-span-1",
+    background: (
+      <div className="absolute inset-0 flex items-center justify-center opacity-50">
+        <div className="grid grid-rows-2 gap-4 p-4 transform transition-all duration-300 ease-out group-hover:scale-105">
+          {['Dockerfile', 'docker-compose.yml'].map((file) => (
+            <div key={file} className="text-xs font-mono p-2 rounded-lg bg-gray-900/10 dark:bg-gray-50/10">
+              {file}
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
   },
   {
     Icon: Settings2,
